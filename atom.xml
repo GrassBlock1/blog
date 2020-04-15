@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>草方块 の 自留地</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-04-15T00:07:24.070Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>草方块</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2020/04/15/hello-world/"/>
+    <id>http://yoursite.com/2020/04/15/hello-world/</id>
+    <published>2020-04-15T00:07:24.070Z</published>
+    <updated>2020-04-15T00:07:24.070Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
