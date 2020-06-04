@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daily.acfk.xyz/"/>
-  <updated>2020-04-15T00:07:24.070Z</updated>
+  <updated>2020-06-04T14:03:36.000Z</updated>
   <id>http://daily.acfk.xyz/</id>
   
   <author>
@@ -17,9 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>music</title>
+    <link href="http://daily.acfk.xyz/post/ckb0uqu4m0003ius63g0igs5h.html"/>
+    <id>http://daily.acfk.xyz/post/ckb0uqu4m0003ius63g0igs5h.html</id>
+    <published>2020-06-04T14:04:28.750Z</published>
+    <updated>2020-06-04T14:03:36.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
-    <link href="http://daily.acfk.xyz/post/ckayuphfl0000bus66ed0dotu.html"/>
-    <id>http://daily.acfk.xyz/post/ckayuphfl0000bus66ed0dotu.html</id>
+    <link href="http://daily.acfk.xyz/post/ckb0uqu4e0001ius6bp20gizy.html"/>
+    <id>http://daily.acfk.xyz/post/ckb0uqu4e0001ius6bp20gizy.html</id>
     <published>2020-04-15T00:07:24.070Z</published>
     <updated>2020-04-15T00:07:24.070Z</updated>
     
