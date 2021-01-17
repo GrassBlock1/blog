@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://daily.acfk.xyz
+url: http://hexo.imgb.pp.ua
 root: /
 permalink: post/:id.html
 permalink_defaults:
@@ -113,4 +113,4 @@ deploy:
   type: heroku
   repo: https://git.heroku.com/hexo-gb.git
   # example, https://github.com/hexojs/hexojs.github.io
-  message: 网站已于 {{ now('YYYY-MM-DD HH:mm:ss') }}) 部署成功。
+  message: Pushed at  {{ now('YYYY-MM-DD HH:mm:ss') }} .
