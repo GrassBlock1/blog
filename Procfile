@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-nodejs-nginx public
+web: heroku-nodejs-nginx public
