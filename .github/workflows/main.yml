@@ -1,0 +1,16 @@
+name: Hexo deployer
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14.x
+      - name: Install Dependencies
+        run: npm install
+      - name: Compile hexo website
+        run: npm hexo generate
