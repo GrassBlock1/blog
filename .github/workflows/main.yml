@@ -13,4 +13,4 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Compile hexo website
-        run: hexo generate
+        run: npm install hexo & hexo generate
