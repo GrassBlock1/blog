@@ -5,9 +5,9 @@
   <subtitle>此生无悔入MC，来世愿做方块人！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://dcn.acfk.xyz/"/>
-  <updated>2020-07-26T03:40:14.160Z</updated>
-  <id>http://dcn.acfk.xyz/</id>
+  <link href="https://hexo.imgb.pp.ua/"/>
+  <updated>2020-04-15T00:07:24.000Z</updated>
+  <id>https://hexo.imgb.pp.ua/</id>
   
   <author>
     <name>草方块</name>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>pagermaid - 将你变为人形自走bot</title>
-    <link href="http://dcn.acfk.xyz/post/ckk1url1l00020zs6axk6hf3p.html"/>
-    <id>http://dcn.acfk.xyz/post/ckk1url1l00020zs6axk6hf3p.html</id>
-    <published>2020-07-26T03:36:37.000Z</published>
-    <updated>2020-07-26T03:40:14.160Z</updated>
+    <title>Hello World</title>
+    <link href="https://hexo.imgb.pp.ua/archives/hello-world"/>
+    <id>https://hexo.imgb.pp.ua/archives/hello-world</id>
+    <published>2021-01-19T06:28:06.190Z</published>
+    <updated>2020-04-15T00:07:24.000Z</updated>
     
     <summary type="html">
     
@@ -40,11 +40,11 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://dcn.acfk.xyz/post/ckk1url1500000zs6bdn49itz.html"/>
-    <id>http://dcn.acfk.xyz/post/ckk1url1500000zs6bdn49itz.html</id>
-    <published>2020-04-15T00:07:24.070Z</published>
-    <updated>2020-04-15T00:07:24.070Z</updated>
+    <title>pagermaid - 将你变为人形自走bot</title>
+    <link href="https://hexo.imgb.pp.ua/archives/%E5%B0%86%E4%BD%A0%E5%8F%98%E4%B8%BA%E4%BA%BA%E5%BD%A2%E8%87%AA%E8%B5%B0bot"/>
+    <id>https://hexo.imgb.pp.ua/archives/%E5%B0%86%E4%BD%A0%E5%8F%98%E4%B8%BA%E4%BA%BA%E5%BD%A2%E8%87%AA%E8%B5%B0bot</id>
+    <published>2020-07-26T03:36:37.000Z</published>
+    <updated>2020-07-26T03:40:14.000Z</updated>
     
     <summary type="html">
     
