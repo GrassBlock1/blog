@@ -9,17 +9,17 @@ rm -r ./mercury/.idea
 rm -r ./mercury/.vscode
 echo "copying files"
 # check the directory exists first
-if [ -f ./assets ]; then
+if [ -n "$(ls -A ./assets 2>/dev/null)" ]; then
     cp ./assets/* ./mercury/src/assets/ 2>/dev/null
 else
     echo "assets directory does not exist,skipping"
 fi
-if [ -f ./content ]; then
+if [ -n "$(ls -A ./content 2>/dev/null)" ]; then
     cp ./content ./mercury/src/content/ 2>/dev/null
 else
     echo "content directory does not exist,skipping"
 fi
-if [ -f ./public ]; then
+if [ -n "$(ls -A ./public 2>/dev/null)" ]; then
     mkdir ./mercury/public && cp ./public/* ./mercury/public/ 2>/dev/null
 else
     echo "[public] directory does not exist,skipping"
