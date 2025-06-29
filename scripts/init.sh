@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+echo "cloning repo"
+git clone https://github.com/GrassBlock1/mercury ./mercury
+echo "removing unnecessary files"
+# emptying content files without deleting config files
+find ./mercury/src/content/pages ! -name '_schemas.ts' -type f -exec rm -r {} +
+find ./mercury/src/content/posts ! -name '_schemas.ts' -type f -exec rm -r {} +
+rm -r ./mercury/.idea
+rm -r ./mercury/.vscode
+echo "copying files"
+# check the directory exists first
+if [ -f ./assets ]; then
+    cp ./assets/* ./mercury/src/assets/ 2>/dev/null
+else
+    echo "assets directory does not exist,skipping"
+fi
+if [ -f ./content ]; then
+    cp ./content ./mercury/src/content/ 2>/dev/null
+else
+    echo "content directory does not exist,skipping"
+fi
+if [ -f ./public ]; then
+    mkdir ./mercury/public && cp ./public/* ./mercury/public/ 2>/dev/null
+else
+    echo "[public] directory does not exist,skipping"
+fi
+echo "installing dependencies"
+if ! type pnpm > /dev/null; then
+  # ask install pnpm here
+  echo "you need to install pnpm to continue" && exit 1
+fi
+# install the dependencies of the project
+pnpm i
+# install the dependencies of the theme
+cd mercury && pnpm i
+echo "init stage done"

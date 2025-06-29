@@ -1,0 +1,16 @@
+{
+  "name": "mercury-starter",
+  "version": "1.0.0",
+  "description": "A template to help you start you blog quickly",
+  "main": "merge-configs.ts",
+  "scripts": {
+    "start": "ts-node merge-configs.ts"
+  },
+  "dependencies": {
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "ts-node": "^10.9.2"
+  }
+}
