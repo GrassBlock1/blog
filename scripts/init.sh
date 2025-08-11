@@ -16,7 +16,7 @@ else
     echo "assets directory does not exist,skipping"
 fi
 if [ -n "$(ls -A ./content 2>/dev/null)" ]; then
-    cp ./content ./mercury/src/content/ 2>/dev/null
+    cp -r ./content/. ./mercury/src/content/ 2>/dev/null
 else
     echo "content directory does not exist,skipping"
 fi
