@@ -23,17 +23,16 @@ fi
 if [ -n "$(ls -A ./public 2>/dev/null)" ]; then
     mkdir ./mercury/public && cp ./public/* ./mercury/public/ 2>/dev/null
 else
-    echo "[public] directory does not exist,skipping"
+    echo "public directory does not exist,skipping"
 fi
-if [ ${args[0]} == '--also-copy-src' && -n "$(ls -A ./overrides 2>/dev/null)" ]
+if [ ${args[0]} == '--also-copy-src' && -n "$(ls -A ./overrides 2>/dev/null)" ]; then
     if ! type rsync > /dev/null; then
         # ask install async here
         rsync -av --progress ./overrides/ ./mercury/src
     else
         cp -r ./overrides/. ./mercury/src
     fi
-
-else
+fi
 echo "installing dependencies"
 if ! type pnpm > /dev/null; then
   # ask install pnpm here
