@@ -8,6 +8,7 @@ find ./mercury/src/content/posts ! -name '_schemas.ts' -type f -exec rm -r {} +
 rm -r ./mercury/.idea
 rm -r ./mercury/.vscode
 echo "copying files"
+args=("$@")
 # check the directory exists first
 if [ -n "$(ls -A ./assets 2>/dev/null)" ]; then
     cp ./assets/* ./mercury/src/assets/ 2>/dev/null
@@ -24,6 +25,15 @@ if [ -n "$(ls -A ./public 2>/dev/null)" ]; then
 else
     echo "[public] directory does not exist,skipping"
 fi
+if [ ${args[0]} == '--also-copy-src' && -n "$(ls -A ./overrides 2>/dev/null)" ]
+    if ! type rsync > /dev/null; then
+        # ask install async here
+        rsync -av --progress ./overrides/ ./mercury/src
+    else
+        cp -r ./overrides/. ./mercury/src
+    fi
+
+else
 echo "installing dependencies"
 if ! type pnpm > /dev/null; then
   # ask install pnpm here
