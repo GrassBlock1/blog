@@ -11,7 +11,7 @@ echo "copying files"
 args=("$@")
 # check the directory exists first
 if [ -n "$(ls -A ./assets 2>/dev/null)" ]; then
-    cp ./assets/* ./mercury/src/assets/ 2>/dev/null
+    cp -r ./assets/. ./mercury/src/assets/ 2>/dev/null
 else
     echo "assets directory does not exist,skipping"
 fi
@@ -21,11 +21,12 @@ else
     echo "content directory does not exist,skipping"
 fi
 if [ -n "$(ls -A ./public 2>/dev/null)" ]; then
-    mkdir ./mercury/public && cp ./public/* ./mercury/public/ 2>/dev/null
+    mkdir ./mercury/public && cp ./public/. ./mercury/public/ 2>/dev/null
 else
     echo "public directory does not exist,skipping"
 fi
 if [[ "${args[0]}" == '--also-copy-src' && -n "$(ls -A ./overrides 2>/dev/null)" ]]; then
+    echo "copying overrides"
     if ! type rsync > /dev/null; then
         # ask install async here
         rsync -av --progress ./overrides/ ./mercury/src
