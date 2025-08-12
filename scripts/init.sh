@@ -27,7 +27,7 @@ else
 fi
 if [[ "${args[0]}" == '--also-copy-src' && -n "$(ls -A ./overrides 2>/dev/null)" ]]; then
     echo "copying overrides"
-    if ! type rsync > /dev/null; then
+    if type rsync > /dev/null; then
         # ask install async here
         rsync -av --progress ./overrides/ ./mercury/src
     else
