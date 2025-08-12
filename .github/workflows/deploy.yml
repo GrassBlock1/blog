@@ -1,0 +1,74 @@
+name: Deploy to Workers # 名字随意
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 21.x
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # 令 GitHub 在 git clone 和 git checkout 后「忘记」使用的 credentials。
+          # 如果之后需要以另外的身份（如你的 GitHub Bot）执行 git push 操作时（如部署到 GitHub Pages），必须设置为 false。
+          persist-credentials: false
+          submodules: true
+      - name: Install Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: "22.x"
+      # 缓存 node_modules，缓存机制参见 GitHub 文档：https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
+      - name: Cache node_modules
+        uses: actions/cache@v4 # 使用 GitHub 官方的缓存 Action。
+        env:
+          cache-name: mercury-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package.json') }}
+          # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: |
+            - recursive: false
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+      - name: Set Timezone
+        run: |
+          export TZ='Asia/Shanghai'
+      - name: build
+        run: |
+          pnpm run build
+      # 这里是为了将站点部署到服务器
+      # 当然你也可以使用其他的部署方式，如部署到 Cloudflare Pages 等
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # 这里的 SSH_PRIVATE_KEY 是你在 GitHub Secrets 中设置的私钥
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+          # 如果你只需要连接到特定的服务器，你可以在 Secrets 设置 known_hosts，将机器的公钥添加到 known_hosts 中即可
+          # 如果你不想使用 known_hosts，你可以将 SSH_KNOWN_HOSTS 设置为 unnecessary
+          # https://github.com/shimataro/ssh-key-action
+          # https://stackoverflow.com/questions/34906302/add-public-key-to-known-hosts-file
+      - name: Deploy to Server
+        run: rsync -avz --progress ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USER }}/lab/ --delete
+      - name: Notify
+        run: |
+          curl https://{{ secrets.NTFY_HOST }} \
+          -H "Authorization: Bearer ${{ secrets.NTFY_TOKEN }}" \
+          -d '{
+              "topic": "me",
+              "message": "快来查看吧",
+              "title": "实验室已在成功部署",
+              "tags": ["bell"],
+              "priority": 4,
+              "click": "https://lab.gb0.dev",
+              "actions": [{ "action": "view", "label": "查看", "url": "https://lab.gb0.dev" }]
+          }'
+            
