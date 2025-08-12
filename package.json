@@ -4,7 +4,8 @@
   "description": "A template to help you start you blog quickly",
   "main": "merge-configs.ts",
   "scripts": {
-    "start": "ts-node merge-configs.ts"
+    "start": "ts-node merge-configs.ts",
+    "build": "bash ./scripts/entrypoint.sh --copy-src-when-init --copy-config-when-merge"
   },
   "dependencies": {
     "typescript": "^5.4.5"
