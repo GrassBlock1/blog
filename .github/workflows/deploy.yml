@@ -28,17 +28,18 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
+        # https://stackoverflow.com/questions/34906302/add-public-key-to-known-hosts-file
       - name: Install ssh config
         run: |
           echo "${{ secrets.SSH_CONFIG }}" >> ~/.ssh/config
           chmod 600 ~/.ssh/config
       - name: Deploy to Server
         run: |
-          ssh -t lab-deployer "
+          ssh lab-deployer '
           cd ~/lab && git pull &&
-          pnpm install &&
-          pnpm build && systemctl --user restart lab-webserver.service
-          "
+          $HOME/.config/nvm/versions/node/v22.18.0/bin/pnpm install &&
+          $HOME/.config/nvm/versions/node/v22.18.0/bin/pnpm build && systemctl --user restart lab-webserver.service
+          '
       - name: Notify
         run: |
           curl https://${{ secrets.NTFY_HOST }} \
