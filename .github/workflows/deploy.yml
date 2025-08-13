@@ -22,15 +22,12 @@ jobs:
       # 这里是为了将站点部署到服务器
       # 当然你也可以使用其他的部署方式，如部署到 Cloudflare Pages 等
       - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # 这里的 SSH_PRIVATE_KEY 是你在 GitHub Secrets 中设置的私钥
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-          # 如果你只需要连接到特定的服务器，你可以在 Secrets 设置 known_hosts，将机器的公钥添加到 known_hosts 中即可
-          # 如果你不想使用 known_hosts，你可以将 SSH_KNOWN_HOSTS 设置为 unnecessary
-          # https://github.com/shimataro/ssh-key-action
-          # https://stackoverflow.com/questions/34906302/add-public-key-to-known-hosts-file
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
       - name: Install ssh config
         run: |
           echo "${{ secrets.SSH_CONFIG }}" >> ~/.ssh/config
