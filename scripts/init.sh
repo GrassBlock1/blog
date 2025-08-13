@@ -5,6 +5,7 @@ echo -e "[init] removing unnecessary files\n"
 # emptying content files without deleting config files
 find ./mercury/src/content/pages ! -name '_schemas.ts' -type f -exec rm -r {} +
 find ./mercury/src/content/posts ! -name '_schemas.ts' -type f -exec rm -r {} +
+find ./mercury/src/data ! -name 'authors._schema.ts' -type f -exec rm -r {} +
 rm -r ./mercury/.idea
 rm -r ./mercury/.vscode
 echo -e "[init] copying files\n"
@@ -18,6 +19,11 @@ if [ -n "$(ls -A ./content 2>/dev/null)" ]; then
     cp -r ./content/. ./mercury/src/content/ 2>/dev/null
 else
     echo "content directory does not exist, skipping"
+fi
+if [ -n "$(ls -A ./data 2>/dev/null)" ]; then
+    cp -r ./data/. ./mercury/src/data/ 2>/dev/null
+else
+    echo "data directory does not exist, skipping"
 fi
 if [ -n "$(ls -A ./public 2>/dev/null)" ]; then
     mkdir ./mercury/public && cp ./public/. ./mercury/public/ 2>/dev/null
