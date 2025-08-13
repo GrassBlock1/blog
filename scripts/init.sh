@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+if [ -n "$(ls -A ./mercury 2>/dev/null)" ]; then
+    rm -rf ./mercury
+fi
 echo -e "[init] cloning repo\n"
 git clone https://github.com/GrassBlock1/mercury ./mercury
 echo -e "[init] removing unnecessary files\n"
