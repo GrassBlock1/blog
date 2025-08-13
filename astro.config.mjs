@@ -13,8 +13,10 @@ import rehypeKatex from "rehype-katex";
 import partytown from '@astrojs/partytown';
 import {remarkModifiedTime} from "./src/plugins/remark/modified-time.mjs";
 
+import node from '@astrojs/node';
+
 export default defineConfig({
-    site: 'https://lab.gb0.dev',
+    site: 'https://beta.lab.gb0.dev',
     base: '/',
     trailingSlash: 'ignore',
     redirects: {
@@ -42,5 +44,7 @@ export default defineConfig({
 
     integrations: [sitemap(), mdx(), partytown()],
 
-    adapter: cloudflare()
+    adapter: node({
+      mode: 'standalone'
+    })
 });
