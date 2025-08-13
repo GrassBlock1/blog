@@ -4,6 +4,7 @@ if [ -n "$(ls -A ./mercury 2>/dev/null)" ]; then
 fi
 echo -e "[init] cloning repo\n"
 git clone https://github.com/GrassBlock1/mercury ./mercury
+cp -rp ./astro.config.mjs ./mercury/astro.config.mjs
 echo -e "[init] removing unnecessary files\n"
 # emptying content files without deleting config files
 find ./mercury/src/content/pages ! -name '_schemas.ts' -type f -exec rm -r {} +
