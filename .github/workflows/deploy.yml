@@ -36,9 +36,10 @@ jobs:
       - name: Deploy to Server
         run: |
           ssh lab-deployer '
+          . ~/.config/nvm/nvm.sh # this should fix the node command not found error
           cd ~/lab && git pull &&
-          $HOME/.config/nvm/versions/node/v22.18.0/bin/pnpm install &&
-          $HOME/.config/nvm/versions/node/v22.18.0/bin/pnpm build && systemctl --user restart lab-webserver.service
+          pnpm install &&
+          pnpm build && systemctl --user restart lab-webserver.service
           '
       - name: Notify
         run: |
