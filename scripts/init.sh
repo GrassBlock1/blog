@@ -11,22 +11,22 @@ rm -r ./mercury/.vscode
 echo -e "[init] copying files\n"
 # check the directory exists first
 if [ -n "$(ls -A ./assets 2>/dev/null)" ]; then
-    cp -r ./assets/. ./mercury/src/assets/ 2>/dev/null
+    cp -rp ./assets/. ./mercury/src/assets/ 2>/dev/null
 else
     echo "assets directory does not exist, skipping"
 fi
 if [ -n "$(ls -A ./content 2>/dev/null)" ]; then
-    cp -r ./content/. ./mercury/src/content/ 2>/dev/null
+    cp -rp ./content/. ./mercury/src/content/ 2>/dev/null
 else
     echo "content directory does not exist, skipping"
 fi
 if [ -n "$(ls -A ./data 2>/dev/null)" ]; then
-    cp -r ./data/. ./mercury/src/data/ 2>/dev/null
+    cp -rp ./data/. ./mercury/src/data/ 2>/dev/null
 else
     echo "data directory does not exist, skipping"
 fi
 if [ -n "$(ls -A ./public 2>/dev/null)" ]; then
-    mkdir ./mercury/public && cp ./public/. ./mercury/public/ 2>/dev/null
+    mkdir ./mercury/public && cp -rp ./public/. ./mercury/public/ 2>/dev/null
 else
     echo "public directory does not exist, skipping"
 fi
@@ -36,7 +36,7 @@ if [[ "$1" == "--also-copy-src" && -n "$(ls -A ./overrides 2>/dev/null)" ]]; the
         # ask install async here
         rsync -av --progress ./overrides/ ./mercury/src
     else
-        cp -r ./overrides/. ./mercury/src
+        cp -rp ./overrides/. ./mercury/src
     fi
 fi
 echo -e "[init] installing dependencies\n"
