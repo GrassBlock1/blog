@@ -15,5 +15,8 @@ else
 fi
 echo "----- merging configs done -----"
 echo "----- building site -----"
-bash $SCRIPT_DIR/build.sh
+if ! bash $SCRIPT_DIR/build.sh; then
+    echo "----- building site failed -----"
+    exit 1
+fi
 echo "----- building site done -----"
