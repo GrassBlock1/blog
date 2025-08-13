@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 echo "----- initializing project -----"
+bash $SCRIPT_DIR/restore-time-from-git.sh
 if [ "$1" == '--copy-src-when-init' ]; then
 	bash $SCRIPT_DIR/init.sh --also-copy-src
 else
