@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 echo "starting build"
-cd mercury
-pnpm build || (echo "build failed" && exit 1)
+cd mercury || { echo "mercury directory not found, exiting" ; exit 1; }
+pnpm build || { echo "build failed" ; exit 1; }
 cd ..
 # move the output to make the deployment service use with Astro correctly
 mv ./mercury/dist ./
