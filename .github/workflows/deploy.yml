@@ -36,10 +36,11 @@ jobs:
       - name: Deploy to Server
         run: |
           ssh lab-deployer '
-          . ~/.config/nvm/nvm.sh # this should fix the node command not found error
+          . ~/.local/bin/proxy.sh &&
+          . ~/.config/nvm/nvm.sh # this should fix the node command not found error &&
           cd ~/lab && git pull &&
           pnpm install &&
-          pnpm build && systemctl --user restart lab-webserver.service
+          pnpm build && echo "Trying to start webserver..." && systemctl --user restart lab-webserver.service
           '
       - name: Notify
         run: |
