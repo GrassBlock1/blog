@@ -2,7 +2,7 @@ export const siteConfig = {
     // site meta info
     title: '/var/log/gblab',
     description: '此处会不定时产生包含大量废话的日志文件',
-    homepageOgImage: '',
+    homepageOgImage: '/img/blog-cover.png',
     defaultAuthor: {
         id: 'grassblock', // (optional) an id in the authors.yaml, will override the setting below (if id exists)
         name: 'GrassBlock',
