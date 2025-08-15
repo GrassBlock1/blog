@@ -24,7 +24,7 @@ const getImagePath = (doc, outputDir) => {
     // 那么图片存放位置dirPath为: docs/images/标题2/
     // 文档图片前缀prefixKey为: ../images/标题2
     const dirPath = path.join(outputDir, slug)
-    const prefixKey = path.join("/img", slug)
+    const prefixKey = path.join("../../../assets/img", slug)
     // 必须返回这两个字段
     return {
         dirPath,

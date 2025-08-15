@@ -75,7 +75,7 @@ module.exports = {
     platform: 'local',
     local: {
       outputDir: './assets/img',
-      prefixKey: '/img',
+      prefixKey: '../../../assets/img',
       pathFollowDoc: false,
       imagePathExt: './scripts/elog/image.js'
     },
